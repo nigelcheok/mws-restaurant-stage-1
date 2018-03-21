@@ -11,6 +11,8 @@ body {
 	background-color: #fdfdfd;
 	margin: 0;
 	position:relative;
+
+	overflow-x: hidden;
 }
 ul, li {
 	font-family: Arial, Helvetica, sans-serif;
@@ -44,7 +46,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   color: #aaa;
   font-size: 8pt;
   letter-spacing: 1px;
-  padding: 25px;
+  padding: 25px 0;
   text-align: center;
   text-transform: uppercase;
 }
@@ -64,6 +66,9 @@ nav h1 a {
   font-weight: 200;
   letter-spacing: 10px;
   text-transform: uppercase;
+
+  transform: translateY(24px);
+  display: block;
 }
 #breadcrumb {
     padding: 10px 40px 16px;
@@ -71,7 +76,8 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
+    /*width: calc(50% - 80px);*/
+    width: 100%;
 }
 
 /* Display list items side by side */
@@ -99,9 +105,10 @@ nav h1 a {
 }
 /* ====================== Map ====================== */
 #map {
-  height: 400px;
+  /*height: 400px;*/
   width: 100%;
   background-color: #ccc;
+  height: calc(100vh - 80px - 140px - 66px);
 }
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
@@ -116,6 +123,8 @@ nav h1 a {
   font-weight: normal;
   line-height: 1;
   margin: 0 20px;
+
+  transform: translateY(5px);
 }
 .filter-options select {
   background-color: white;
@@ -133,9 +142,13 @@ nav h1 a {
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
-  margin: 0;
+  margin: 0 auto;
   padding: 30px 15px 60px;
-  text-align: center;
+  /*text-align: center;*/
+
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
 }
 #restaurants-list li {
   background-color: #fff;
@@ -146,6 +159,10 @@ nav h1 a {
   padding: 0 30px 25px;
   text-align: left;
   width: 270px;
+
+/*  float: left;*/
+  display: inline-block;
+
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -191,10 +208,10 @@ nav h1 a {
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
-  height: 87%;
+  height: calc(100vh - 132px);
   position: fixed;
   right: 0;
-  top: 80px;
+  top: 132px;
   width: 50%;
 }
 .inside #map {
@@ -272,4 +289,68 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+}
+
+
+/* ====================== Responsive Grid Based Layout ====================== */
+
+.container {
+	max-width: 90%;
+	margin: auto;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+@media only screen and (max-width: 1280px) {
+    .inside #map-container {
+        position: relative;
+        width: 100%;
+        top: 0;
+    }
+
+    #restaurant-container {
+    	width: 100%;
+    }
+
+    #reviews-container {
+    	margin-top: 60px;
+    	width: 100%;
+    }
+
+    .inside #footer {
+    	width: 100%;
+    }
 }
